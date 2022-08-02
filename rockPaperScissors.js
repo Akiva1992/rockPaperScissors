@@ -51,7 +51,6 @@ function game() {
             playerSelection = prompt("Play Rock/Paper/Scissors ").toLowerCase().trim()
         }
         let computerSelection = getComputerChoice()
-        console.log(computerSelection)
         let player = playRound(computerSelection, playerSelection)
             if (player == "won") {
                 playerScore++
