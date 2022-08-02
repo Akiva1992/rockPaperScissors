@@ -60,3 +60,23 @@ Feel free to create more “helper” functions if you think it would be useful.
                 display score with console.log(computerSelection, playerSelection) 
             return (computerSelection > playerSelection)? computer : player;
 5. Run game, by calling game()
+    create function game()
+    declare computerSelection = getComputerChoice
+    declare two variables and inital value of 0 playerScore computerScore
+    create a for loop that runs 5 times
+        call playRound(computerSelection,playerSelection)
+        if playerSelection won 
+            playerScore++
+            print (playerScore , computerScore)
+        else if computerSelection won
+            computerSelection++
+            print (playerScore , computerScore)
+        else 
+            print (playerScore , computerScore)
+
+    if playerScore > computerScore
+        print (you won (playerScore , computerScore))
+    else if playerScore < computerScore
+        print (you lose (playerScore , computerScore))
+    else
+        print (It's a tie (playerScore , computerScore))
