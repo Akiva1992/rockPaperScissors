@@ -6,3 +6,20 @@
     padding:5px;
 }
 
+
+#start-screen {
+    display: none;
+    
+}
+
+#game-screen {
+    display: none;
+}
+
+#start-screen.screen.display{
+    display: block;
+}
+
+#game-screen.screen.display{
+    display: block;
+}

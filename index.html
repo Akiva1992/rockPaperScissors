@@ -11,13 +11,25 @@
 </head>
 
 <body>
-    <button class="rock">ROCK</button>
-    <button class="paper">PAPER</button>
-    <button class="scissors">SCISSORS</button>
-    <div id="result"></div>
-    <div id="runningScore"></div>
-    <div id="winner"></div>
-    <button class="newGame">New Game</button>
+    <div id="start-screen" class="screen display" >
+        <div class="container">
+            <button id="male-player" class="male-player"><img src="./imgs/male.png" alt="first"></button>
+            <button id="female-player" class="female-player"><img src="./imgs/female.png" alt="second"></button>
+            <button id="start-game-btn">Start Game</button>
+        </div>
+    </div>
+    <div id="game-screen" class="screen">
+        <div class="container">
+            <div id="avatar-selection"><img class="avatar-img" src="./imgs/male.png" alt="male"></div>
+            <button class="selection-button" class="rock">ROCK</button>
+            <button class="selection-button" class="paper">PAPER</button>
+            <button class="selection-button" class="scissors">SCISSORS</button>
+            <div id="result"></div>
+            <div id="runningScore"></div>
+            <div id="winner"></div>
+            <button class="newGame">New Game</button>
+        </div>
+    </div>
 
 </body>
 
