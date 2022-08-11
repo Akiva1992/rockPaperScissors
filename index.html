@@ -19,18 +19,34 @@
         </div>
     </div>
     <div id="game-screen" class="screen">
-        <div class="container">
-            <div id="avatar-selection"><img class="avatar-img" src="./imgs/male.png" alt="male"></div>
-            <button class="selection-button" class="rock">ROCK</button>
-            <button class="selection-button" class="paper">PAPER</button>
-            <button class="selection-button" class="scissors">SCISSORS</button>
-            <div id="result"></div>
-            <div id="runningScore"></div>
-            <div id="winner"></div>
-            <button class="newGame">New Game</button>
+        <div class="game-content container">
+            <div id="show-content" class="screen" >
+                <div id="avatar-selection"><img class="avatar-img" src="./imgs/male.png" alt="male"></div>
+                <button class="selection-button" class="rock">ROCK</button>
+                <button class="selection-button" class="paper">PAPER</button>
+                <button class="selection-button" class="scissors">SCISSORS</button>
+                <div id="result"></div>
+                <div id="runningScore"></div>
+                <div id="winner"></div>
+            </div>
+        <div id="end-screen" class="screen">
+            <div class="result-text">You Win!     
+            </div>
+            <button class="new-game">New Game</button>
+        </div>
         </div>
     </div>
-
+    
 </body>
 
 </html>
+
+<!-- <div id="end-screen" class="screen">
+    <div class="container end-screen">
+        <div id="end-result">
+            <div class="result-text">You Win!     
+            </div>
+            <button class="newGame">New Game</button>
+        </div>
+    </div>
+</div> -->

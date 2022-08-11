@@ -5,6 +5,7 @@ const malePlayer = document.getElementById("male-player");
 const femalePlayer = document.getElementById("female-player");
 const startGameBtn = document.getElementById("start-game-btn");
 const gameScreen = document.getElementById("game-screen");
+const showContent = document.getElementById("show-content")
 const startScreen = document.getElementById("start-screen");
 const avatarDiv = document.getElementById("avatar-selection");
 const avatarImg= document.querySelector(".avatar-img")
@@ -17,16 +18,6 @@ femalePlayer.addEventListener("click", appendPlayer);
 startGameBtn.addEventListener("click",startGame);
 
 
-
-// Transitions to the Game Screen.
-function startGame(){
-    if (startScreen.classList.contains("display")){
-        console.log("y")
-        startScreen.classList.remove("display")
-        gameScreen.classList.add("display")
-    }
-}
-
 // Implements player avatar on game screen.
 function appendPlayer(){
     if (this.classList.contains("female-player")){
@@ -36,6 +27,15 @@ function appendPlayer(){
         avatarImg.src = "./imgs/male.png"
     }
 }
+
+// Transitions to the Game Screen.
+function startGame(){
+    if (startScreen.classList.contains("display")){
+        startScreen.classList.remove("display")
+        showContent.classList.add("display")
+    }
+}
+
 
 
 //                    **GAME SCREEN**
@@ -47,7 +47,7 @@ const buttonList = document.querySelectorAll(".selection-button");
 const div = document.getElementById("result")
 const runningScore = document.querySelector("#runningScore");
 const winner = document.querySelector("#winner");
-const newGame = document.querySelector(".newGame");
+const newGame = document.querySelector(".new-game");
 let playerScore = 0, computerScore=0;
 const p = "Your current score is: ", c = "The computer's current score is: ";
 
@@ -123,6 +123,7 @@ function playRound(){
     }
 
     else{
+        endScreenFunc()
         if (playerScore == 5 || computerScore == 5){
             if (playerScore == 5){
                 winner.textContent = "You Are The Winner"
@@ -135,10 +136,17 @@ function playRound(){
 }
 
 function genNewGame(){
+    endScreen.classList.remove("display"); 
     div.textContent="";
     runningScore.textContent ="";
     winner.textContent="";
     playerScore=0, computerScore=0;
 }
 
+const endScreen = document.getElementById("end-screen");
+
+function endScreenFunc(){
+    // showContent.classList.remove("display");
+    endScreen.classList.add("display")
+}
 
