@@ -48,15 +48,40 @@ const div = document.getElementById("result")
 const runningScore = document.querySelector("#runningScore");
 const winner = document.querySelector("#winner");
 const newGame = document.querySelector(".new-game");
+const generateSceneBtn = document.getElementById("generate-scene");
+const scene = document.getElementById("scene");
+const sceneText= document.getElementById("scene-text");
+console.log(scene);
 let playerScore = 0, computerScore=0;
 const p = "Your current score is: ", c = "The computer's current score is: ";
 
 
-// Random r.p.s computer selection generator.
-function getComputerChoice() {
-    let choices = ["rock", "paper", "scissors"];
+
+// Generates a shuffled array.
+// index 0 == Rock, index 1 == Paper, index 2 == Scissors.
+function generateArray() {
+    let choices = ["Image", "Text", "Video"];
+    for (let i = 0; i< choices.length; i++){
+        let randomVal = Math.floor(Math.random() * choices.length);
+        let tempValVar="";
+        let currentVal = choices[i];
+        tempValVar=currentVal;
+        currentVal=choices[randomVal];
+        choices[i]=currentVal;
+        choices[randomVal]=tempValVar;    
+    }
+    console.log(choices)
+    return choices 
+}
+
+
+// Generates and stores a shuffled array in variable array.
+let array = generateArray()
+
+// Returns random value from array.
+function randomIndexgenerator() {
     let randomIndex = Math.floor(Math.random() * 3)
-    return choices[randomIndex]
+    return randomIndex
 }
 
 // btn event listener.
@@ -65,9 +90,33 @@ buttonList.forEach(btn => btn.addEventListener("click", playRound))
 // New game btn listener.
 newGame.addEventListener("click",genNewGame);
 
+// Click event listener for new scene btn.
+generateSceneBtn.addEventListener("click",implementScene);
+
+// Implements the scene in to the scene div.
+function implementScene(){
+    let newScene = randomIndexgenerator();
+    console.log(newScene)
+    if (newScene == 0){
+        sceneText.textContent="Image";
+        sceneText.classList="computer-rock";
+
+    }
+    else if (newScene== 1){
+        sceneText.textContent="Text";
+        sceneText.classList="computer-paper";
+
+    }
+    else{
+        sceneText.textContent="Video";
+        sceneText.classList="computer-scissors";
+    }
+}
+
+let rock = 0, paper = 1, scissors = 2;
 
 function playRound(){
-    let computerSelection = getComputerChoice()
+    let computerSelection = sceneText.classList.value;
     console.log(computerSelection)
     if (playerScore < 5 && computerScore < 5){
         if (this.classList.value === "rock"){
