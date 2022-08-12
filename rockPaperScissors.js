@@ -1,18 +1,23 @@
 //                    **START SCREEN**
 
 // Start screen variables.
-const malePlayer = document.getElementById("male-player");
-const femalePlayer = document.getElementById("female-player");
+const maleUser = document.getElementById("male-user");
+const femaleUser = document.getElementById("female-user");
+const johnComputer = document.getElementById("john-computer");
+const lucyComputer = document.getElementById("lucy-computer");
+const laylaComputer = document.getElementById("layla-computer");
 const startGameBtn = document.getElementById("start-game-btn");
+const startScreen = document.getElementById("start-screen");
 const gameScreen = document.getElementById("game-screen");
 const showContent = document.getElementById("show-content")
-const startScreen = document.getElementById("start-screen");
-const avatarDiv = document.getElementById("avatar-selection");
-const avatarImg= document.querySelector(".avatar-img")
+const userAvatarDiv = document.getElementById("user-avatar-div");
+const computerAvatarDiv = document.getElementById("computer-avatar-div");
+const userAvatarImg= document.querySelector(".user-avatar-img")
+const computerAvatarImg = document.querySelector(".computer-avatar-img");
 
 // Event listeners for avatar selection.
-malePlayer.addEventListener("click", appendPlayer);
-femalePlayer.addEventListener("click", appendPlayer);
+maleUser.addEventListener("click", appendPlayer);
+femaleUser.addEventListener("click", appendPlayer);
 
 // Event listener for screen transition.
 startGameBtn.addEventListener("click",startGame);
@@ -20,17 +25,35 @@ startGameBtn.addEventListener("click",startGame);
 
 // Implements player avatar on game screen.
 function appendPlayer(){
-    if (this.classList.contains("female-player")){
-        avatarImg.src = "./imgs/female.png"
+    if (this.classList.contains("female-user")){
+        userAvatarImg.src = "./imgs/female.png"
     }
     else{
-        avatarImg.src = "./imgs/male.png"
+        userAvatarImg.src = "./imgs/male.png"
+    }
+}
+
+johnComputer.addEventListener("click", appendComputer);
+lucyComputer.addEventListener("click", appendComputer);
+laylaComputer.addEventListener("click", appendComputer);
+
+
+function appendComputer(){
+    if (this.classList.contains("john-computer")){
+        computerAvatarImg.src = "./imgs/john.png"
+    }
+    else if (this.classList.contains("lucy-computer")){
+        computerAvatarImg.src = "./imgs/lucy.png"
+    }
+    else{
+        computerAvatarImg.src = "./imgs/layla.png"
     }
 }
 
 // Transitions to the Game Screen.
 function startGame(){
     if (startScreen.classList.contains("display")){
+        // implementScene()
         startScreen.classList.remove("display")
         showContent.classList.add("display")
     }
@@ -49,9 +72,6 @@ const runningScore = document.querySelector("#runningScore");
 const winner = document.querySelector("#winner");
 const newGame = document.querySelector(".new-game");
 const generateSceneBtn = document.getElementById("generate-scene");
-const scene = document.getElementById("scene");
-const sceneText= document.getElementById("scene-text");
-console.log(scene);
 let playerScore = 0, computerScore=0;
 const p = "Your current score is: ", c = "The computer's current score is: ";
 
@@ -113,20 +133,20 @@ function implementScene(){
     }
 }
 
-let rock = 0, paper = 1, scissors = 2;
+const scene = document.getElementById("scene");
+const sceneText= document.getElementById("scene-text");
 
 function playRound(){
     let computerSelection = sceneText.classList.value;
     console.log(computerSelection)
-    if (playerScore < 5 && computerScore < 5){
-        if (this.classList.value === "rock"){
-            if (computerSelection == "scissors"){
-                div.textContent = "You Win!"
+        if (this.classList.value === "player-rock"){
+            if (computerSelection == "computer-scissors"){
+                div.textContent = "You Lose :("
                 playerScore++
                 runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
-            else if (computerSelection == "paper"){
-                div.textContent = "You Lose :("
+            else if (computerSelection == "computer-paper"){
+                div.textContent = "You Win!"
                 computerScore++
                 runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
@@ -135,13 +155,13 @@ function playRound(){
                 runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
         }
-        else if (this.classList.value === "paper"){
-            if (computerSelection == "scissors"){
+        else if (this.classList.value === "player-paper"){
+            if (computerSelection == "computer-scissors"){
                 div.textContent = "You Lose :("
                 computerScore++
                 runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
-            else if (computerSelection == "paper"){
+            else if (computerSelection == "computer-paper"){
                 div.textContent = "I'ts a Tie.."
                 runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
@@ -153,36 +173,36 @@ function playRound(){
             }
         }
         else {
-            if (computerSelection == "scissors"){
+            if (computerSelection == "computer-scissors"){
                 div.textContent = "I'ts a Tie.."
                 runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
-            else if (computerSelection == "paper"){
-                div.textContent = "You Win!"
+            else if (computerSelection == "computer-paper"){
+                div.textContent = "You Lose :("
                 playerScore++
                 runningScore.textContent= `${p + playerScore} ${c + computerScore}`
 
             }
             else{
-                div.textContent = "You Lose :("
+                div.textContent = "You Win!"
                 computerScore++
                 runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
         }
     }
 
-    else{
-        endScreenFunc()
-        if (playerScore == 5 || computerScore == 5){
-            if (playerScore == 5){
-                winner.textContent = "You Are The Winner"
-            }
-            else if(computerScore==5){
-                winner.textContent= "Game Over"
-            }
-        }
-    }
-}
+    // else{
+    //     endScreenFunc()
+    //     if (playerScore == 5 || computerScore == 5){
+    //         if (playerScore == 5){
+    //             winner.textContent = "You Are The Winner"
+    //         }
+    //         else if(computerScore==5){
+    //             winner.textContent= "Game Over"
+    //         }
+    //     }
+    // }
+
 
 function genNewGame(){
     endScreen.classList.remove("display"); 
@@ -199,3 +219,11 @@ function endScreenFunc(){
     endScreen.classList.add("display")
 }
 
+
+
+
+const charactersObject = {
+    "john": ["scissors","rock","paper"],
+    "lucy":["scissor","paper","rock"],
+    "layla":["rock","scissors","paper"]
+}

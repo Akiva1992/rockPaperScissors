@@ -13,20 +13,28 @@
 <body>
     <div id="start-screen" class="screen display" >
         <div class="container">
-            <button id="male-player" class="male-player"><img src="./imgs/male.png" alt="first"></button>
-            <button id="female-player" class="female-player"><img src="./imgs/female.png" alt="second"></button>
+            <div id="user-character">
+                <button id="male-user" class="male-user"><img src="./imgs/male.png" alt="Male"></button>
+                <button id="female-user" class="female-user"><img src="./imgs/female.png" alt="Female"></button>
+            </div>
+            <div id="cumputer-character">
+                <button id="john-computer" class="john-computer"><img src="./imgs/john.png" alt="John"></button>
+                <button id="lucy-computer" class="lucy-computer"><img src="./imgs/lucy.png" alt="Lucy"></button>
+                <button id="layla-computer" class="layla-computer"><img src="./imgs/layla.png" alt="Layla"></button>
+            </div>
             <button id="start-game-btn">Start Game</button>
         </div>
     </div>
     <div id="game-screen" class="screen">
         <div class="game-content container">
             <div id="show-content" class="screen" >
-                <div id="avatar-selection"><img class="avatar-img" src="./imgs/male.png" alt="male"></div>
-                <button class="selection-button" class="player player-rock">ROCK</button>
-                <button class="selection-button" class="player player-paper">PAPER</button>
-                <button class="selection-button" class="player scissors-scissors">SCISSORS</button>
+                <div id="user-avatar-div"><img class="user-avatar-img" src="./imgs/male.png" alt="male"></div>
+                <div id="computer-avatar"><img class="computer-avatar-img" src="./imgs/john.png" alt="male"></div>
+                <button class="selection-button" class="player player-rock">Like</button>
+                <button class="selection-button" class="player player-paper">Smile</button>
+                <button class="selection-button" class="player scissors-scissors">Heart</button>
                 <button id="generate-scene">Generate new scene</button>
-                <div id="scene"><span id="scene-text"></span></div>
+                <div id="scene"><span id="scene-text" class="scene"></span></div>
                 <div id="result"></div>
                 <div id="runningScore"></div>
                 <div id="winner"></div>
