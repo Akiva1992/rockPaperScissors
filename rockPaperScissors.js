@@ -1,5 +1,6 @@
-//                    **START SCREEN**
 
+////////////////////////////////Start Screen//////////////////////////////////////////////
+// debugger
 // Start screen variables.
 const maleUser = document.getElementById("male-user");
 const femaleUser = document.getElementById("female-user");
@@ -12,16 +13,15 @@ const gameScreen = document.getElementById("game-screen");
 const showContent = document.getElementById("show-content")
 const userAvatarDiv = document.getElementById("user-avatar-div");
 const computerAvatarDiv = document.getElementById("computer-avatar-div");
-const userAvatarImg= document.querySelector(".user-avatar-img")
-const computerAvatarImg = document.querySelector(".computer-avatar-img");
+const userAvatarImg= document.querySelector(".user-avatar-img");
+let computerAvatarImg = document.getElementById("computer-avatar-img");
+
+
+////////////////////////////User Avatar Selection////////////////
 
 // Event listeners for avatar selection.
 maleUser.addEventListener("click", appendPlayer);
 femaleUser.addEventListener("click", appendPlayer);
-
-// Event listener for screen transition.
-startGameBtn.addEventListener("click",startGame);
-
 
 // Implements player avatar on game screen.
 function appendPlayer(){
@@ -33,6 +33,8 @@ function appendPlayer(){
     }
 }
 
+//////////////////////////Computer Avatar Selection/////////////////////////////
+
 johnComputer.addEventListener("click", appendComputer);
 lucyComputer.addEventListener("click", appendComputer);
 laylaComputer.addEventListener("click", appendComputer);
@@ -41,14 +43,30 @@ laylaComputer.addEventListener("click", appendComputer);
 function appendComputer(){
     if (this.classList.contains("john-computer")){
         computerAvatarImg.src = "./imgs/john.png"
+        computerAvatarImg.classList.add("john-computer")
+        computerAvatarImg.classList.remove("lucy-computer")
+        computerAvatarImg.classList.remove("layla-computer")
     }
     else if (this.classList.contains("lucy-computer")){
         computerAvatarImg.src = "./imgs/lucy.png"
+        computerAvatarImg.classList=("lucy-computer")
+        computerAvatarImg.classList.remove("john-computer")
+        computerAvatarImg.classList.remove("layla-computer")
     }
     else{
         computerAvatarImg.src = "./imgs/layla.png"
+        computerAvatarImg.classList=("layla-computer")
+        computerAvatarImg.classList.remove("john-computer")
+        computerAvatarImg.classList.remove("lucy-computer")
     }
 }
+
+
+
+///////////////Start Game Button/////////////////////////
+
+// Event listener for screen transition.
+startGameBtn.addEventListener("click",startGame);
 
 // Transitions to the Game Screen.
 function startGame(){
@@ -60,153 +78,226 @@ function startGame(){
 }
 
 
+/////////////////Game Screen///////////////////////////////////
 
-//                    **GAME SCREEN**
+computerAvatarImg = document.getElementById("computer-avatar-img");
 
+
+
+// let computerArray= []
+
+// if(computerAvatarImg.id == "john-Computer"){
+//     console.log("y")
+// } 
+
+// if (!(startScreen.classList.contains("display"))){
+//     let computerArray= []
+//     computerArray = computerArrayFunc()
+//     console.log(computerArray)
+
+//         function computerArrayFunc(){
+//         let generatedArray= [];
+//         if (computerAvatarImg.classList.contains("john-computer")){
+//             console.log("1")
+//             return computerArray = charactersObject.john;
+//         }
+//         else if (computerAvatarImg.classList.contains("lucy-computer")){
+//             console.log("2")
+//             return computerArray = charactersObject.lucy;
+//         }
+//         else {
+//             console.log("3")
+//             return computerArray = charactersObject.layla;
+//         }
+//     }
+// }
 
 
 // Game screen variable deceleration.
 const buttonList = document.querySelectorAll(".selection-button");
-const div = document.getElementById("result")
+const resultDiv = document.getElementById("result")
 const runningScore = document.querySelector("#runningScore");
 const winner = document.querySelector("#winner");
 const newGame = document.querySelector(".new-game");
 const generateSceneBtn = document.getElementById("generate-scene");
+const scene = document.getElementById("scene");
+const sceneContainer = document.getElementById("scene-container");
+
+// Adds initial class name to enable new scene btn.
+resultDiv.classList.add("result-showing");
+
+
 let playerScore = 0, computerScore=0;
 const p = "Your current score is: ", c = "The computer's current score is: ";
 
 
+// // Generates a shuffled array.
+// // index 0 == Rock, index 1 == Paper, index 2 == Scissors.
+// function generateArray() {
+//     let choices = ["Image", "Text", "Video"];
+//     for (let i = 0; i< choices.length; i++){
+//         let randomVal = Math.floor(Math.random() * choices.length);
+//         let tempValVar="";
+//         let currentVal = choices[i];
+//         tempValVar=currentVal;
+//         currentVal=choices[randomVal];
+//         choices[i]=currentVal;
+//         choices[randomVal]=tempValVar;    
+//     }
+//     // console.log(choices)
+//     return choices 
+// }
+// // Store generated shuffled array in variable- array.
+// let array = generateArray()
 
-// Generates a shuffled array.
-// index 0 == Rock, index 1 == Paper, index 2 == Scissors.
-function generateArray() {
-    let choices = ["Image", "Text", "Video"];
-    for (let i = 0; i< choices.length; i++){
-        let randomVal = Math.floor(Math.random() * choices.length);
-        let tempValVar="";
-        let currentVal = choices[i];
-        tempValVar=currentVal;
-        currentVal=choices[randomVal];
-        choices[i]=currentVal;
-        choices[randomVal]=tempValVar;    
-    }
-    console.log(choices)
-    return choices 
-}
 
+// Returns random index value between 0-2 inclusive.
 
-// Generates and stores a shuffled array in variable array.
-let array = generateArray()
-
-// Returns random value from array.
 function randomIndexgenerator() {
     let randomIndex = Math.floor(Math.random() * 3)
     return randomIndex
 }
-
-// btn event listener.
-buttonList.forEach(btn => btn.addEventListener("click", playRound))
-
-// New game btn listener.
-newGame.addEventListener("click",genNewGame);
 
 // Click event listener for new scene btn.
 generateSceneBtn.addEventListener("click",implementScene);
 
 // Implements the scene in to the scene div.
 function implementScene(){
-    let newScene = randomIndexgenerator();
-    console.log(newScene)
-    if (newScene == 0){
-        sceneText.textContent="Image";
-        sceneText.classList="computer-rock";
+    if (resultDiv.classList.contains("result-showing")){
+        let newScene = randomIndexgenerator();
 
-    }
-    else if (newScene== 1){
-        sceneText.textContent="Text";
-        sceneText.classList="computer-paper";
-
-    }
-    else{
-        sceneText.textContent="Video";
-        sceneText.classList="computer-scissors";
+        if (newScene == 0){
+            sceneContainer.textContent="Text";
+            sceneContainer.classList="scene-of-text"; 
+        }
+        else if (newScene== 1){
+            sceneContainer.textContent="Image";
+            sceneContainer.classList="scene-of-image";
+        }
+        else{
+            sceneContainer.textContent="Video";
+            sceneContainer.classList="scene-of-video";
+        }
+        resultDiv.textContent="";
     }
 }
 
-const scene = document.getElementById("scene");
-const sceneText= document.getElementById("scene-text");
+// btn event listener.
+buttonList.forEach(btn => btn.addEventListener("click", playRound))
 
+const charactersObject = {
+    john: ["scissors","rock","paper"],
+    lucy:["scissor","paper","rock"],
+    layla:["rock","scissors","paper"]
+}
+
+// Is activated when user presses one of his reaction btns.
+// This function determines who won the round.
 function playRound(){
-    let computerSelection = sceneText.classList.value;
-    console.log(computerSelection)
-        if (this.classList.value === "player-rock"){
-            if (computerSelection == "computer-scissors"){
-                div.textContent = "You Lose :("
-                playerScore++
+    if (!resultDiv.classList.contains("result-showing")){
+    
+        // Gets the random index generated in randomIndexGenerator
+        let sceneIndexValue ="";
+        if (sceneContainer.classList.contains("scene-of-text")){
+            sceneIndexValue = 0;
+        }
+        else if (sceneContainer.classList.contains("scene-of-image")){
+            sceneIndexValue = 1;
+        }
+        else if (sceneContainer.classList.contains("scene-of-video")){
+            sceneIndexValue = 2;
+        }
+
+        console.log(sceneIndexValue)
+        
+        
+        ////text==index 0, image==index 1, video==index 2.
+    // Gets the value of the computer array at location of the random index generated.
+        let computerSelection ="";
+        if (computerAvatarImg.classList.contains("john-computer")){
+            computerSelection = charactersObject.john[sceneIndexValue];
+        }
+        else if (computerAvatarImg.classList.contains("lucy-computer")){
+            computerSelection = charactersObject.lucy[sceneIndexValue];
+        }
+        else if (computerAvatarImg.classList.contains("layla-computer")) {
+            computerSelection = charactersObject.layla[sceneIndexValue];
+        }
+        console.log(computerSelection)    
+
+        
+        ////like==rock, smile==paper, heart==scissors.
+
+        if (computerSelection == "rock"){
+            if (this.classList.contains("like")){
+                resultDiv.textContent = "It's a Tie.."
+                resultDiv.classList.add("result-showing");
                 runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
-            else if (computerSelection == "computer-paper"){
-                div.textContent = "You Win!"
-                computerScore++
+            else if ( this.classList.contains("smile")){
+                playerScore++
+                resultDiv.textContent = "You Win!"
+                resultDiv.classList.add("result-showing");
                 runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
             else{
-                div.textContent = "I'ts a Tie.."
+                computerScore++
+                resultDiv.textContent = "You lose."
+                resultDiv.classList.add("result-showing");
                 runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
         }
-        else if (this.classList.value === "player-paper"){
-            if (computerSelection == "computer-scissors"){
-                div.textContent = "You Lose :("
+        else if (computerSelection == "paper"){
+            if (this.classList.contains("like")){
                 computerScore++
+                resultDiv.textContent = "You lose."
+                resultDiv.classList.add("result-showing");
                 runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
-            else if (computerSelection == "computer-paper"){
-                div.textContent = "I'ts a Tie.."
+            else if (this.classList.contains("smile")){
+                resultDiv.textContent = "I'ts a Tie.."
+                resultDiv.classList.add("result-showing");
                 runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
             else{
-                div.textContent = "You Win!"
+                resultDiv.textContent = "You Win!"
+                resultDiv.classList.add("result-showing");
                 playerScore++
                 runningScore.textContent= `${p + playerScore} ${c + computerScore}`
 
             }
         }
         else {
-            if (computerSelection == "computer-scissors"){
-                div.textContent = "I'ts a Tie.."
+            if (computerSelection == "scissors"){
+                playerScore++
+                resultDiv.textContent = "You win!"
+                resultDiv.classList.add("result-showing");
                 runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
             else if (computerSelection == "computer-paper"){
-                div.textContent = "You Lose :("
-                playerScore++
+                computerScore++
+                resultDiv.textContent = "You Lose :("
+                resultDiv.classList.add("result-showing");
                 runningScore.textContent= `${p + playerScore} ${c + computerScore}`
 
             }
             else{
-                div.textContent = "You Win!"
-                computerScore++
+                resultDiv.textContent = "It's a tie."
+                resultDiv.classList.add("result-showing");
                 runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
         }
     }
+}
 
-    // else{
-    //     endScreenFunc()
-    //     if (playerScore == 5 || computerScore == 5){
-    //         if (playerScore == 5){
-    //             winner.textContent = "You Are The Winner"
-    //         }
-    //         else if(computerScore==5){
-    //             winner.textContent= "Game Over"
-    //         }
-    //     }
-    // }
 
+
+// New game btn listener.
+newGame.addEventListener("click",genNewGame);
 
 function genNewGame(){
     endScreen.classList.remove("display"); 
-    div.textContent="";
+    resultDiv.textContent="";
     runningScore.textContent ="";
     winner.textContent="";
     playerScore=0, computerScore=0;
@@ -222,8 +313,3 @@ function endScreenFunc(){
 
 
 
-const charactersObject = {
-    "john": ["scissors","rock","paper"],
-    "lucy":["scissor","paper","rock"],
-    "layla":["rock","scissors","paper"]
-}
