@@ -1,4 +1,3 @@
-
 ////////////////////////////////Start Screen//////////////////////////////////////////////
 // debugger
 // Start screen variables.
@@ -31,6 +30,8 @@ function appendPlayer(){
     else{
         userAvatarImg.src = "./imgs/male.png"
     }
+    // makes sure user made selection1
+    computerAvatarImg.classList.add("start-game1")
 }
 
 //////////////////////////Computer Avatar Selection/////////////////////////////
@@ -42,23 +43,25 @@ laylaComputer.addEventListener("click", appendComputer);
 
 function appendComputer(){
     if (this.classList.contains("john-computer")){
-        computerAvatarImg.src = "./imgs/john.png"
+        computerAvatarImg.src = "./imgs/johnLeft.png"
         computerAvatarImg.classList.add("john-computer")
         computerAvatarImg.classList.remove("lucy-computer")
         computerAvatarImg.classList.remove("layla-computer")
     }
     else if (this.classList.contains("lucy-computer")){
-        computerAvatarImg.src = "./imgs/lucy.png"
-        computerAvatarImg.classList=("lucy-computer")
+        computerAvatarImg.src = "./imgs/lucyLeft.png"
+        computerAvatarImg.classList.add("lucy-computer")
         computerAvatarImg.classList.remove("john-computer")
         computerAvatarImg.classList.remove("layla-computer")
     }
     else{
-        computerAvatarImg.src = "./imgs/layla.png"
-        computerAvatarImg.classList=("layla-computer")
+        computerAvatarImg.src = "./imgs/laylaLeft.png"
+        computerAvatarImg.classList.add("layla-computer")
         computerAvatarImg.classList.remove("john-computer")
         computerAvatarImg.classList.remove("lucy-computer")
     }
+    // makes sure user made selection2
+    computerAvatarImg.classList.add("start-game2")
 }
 
 
@@ -70,8 +73,7 @@ startGameBtn.addEventListener("click",startGame);
 
 // Transitions to the Game Screen.
 function startGame(){
-    if (startScreen.classList.contains("display")){
-        // implementScene()
+    if (startScreen.classList.contains("display") && computerAvatarImg.classList.contains("start-game1")&& computerAvatarImg.classList.contains("start-game2")){
         startScreen.classList.remove("display")
         showContent.classList.add("display")
     }
@@ -79,38 +81,6 @@ function startGame(){
 
 
 /////////////////Game Screen///////////////////////////////////
-
-computerAvatarImg = document.getElementById("computer-avatar-img");
-
-
-
-// let computerArray= []
-
-// if(computerAvatarImg.id == "john-Computer"){
-//     console.log("y")
-// } 
-
-// if (!(startScreen.classList.contains("display"))){
-//     let computerArray= []
-//     computerArray = computerArrayFunc()
-//     console.log(computerArray)
-
-//         function computerArrayFunc(){
-//         let generatedArray= [];
-//         if (computerAvatarImg.classList.contains("john-computer")){
-//             console.log("1")
-//             return computerArray = charactersObject.john;
-//         }
-//         else if (computerAvatarImg.classList.contains("lucy-computer")){
-//             console.log("2")
-//             return computerArray = charactersObject.lucy;
-//         }
-//         else {
-//             console.log("3")
-//             return computerArray = charactersObject.layla;
-//         }
-//     }
-// }
 
 
 // Game screen variable deceleration.
@@ -165,10 +135,10 @@ generateSceneBtn.addEventListener("click",implementScene);
 function implementScene(){
     if (resultDiv.classList.contains("result-showing")){
         let newScene = randomIndexgenerator();
-
+        
         if (newScene == 0){
             sceneContainer.textContent="Text";
-            sceneContainer.classList="scene-of-text"; 
+            sceneContainer.classList="scene-of-text";
         }
         else if (newScene== 1){
             sceneContainer.textContent="Image";
@@ -178,7 +148,9 @@ function implementScene(){
             sceneContainer.textContent="Video";
             sceneContainer.classList="scene-of-video";
         }
+        // These two lines remove the last result from the div, and add class to enable user to react 
         resultDiv.textContent="";
+        resultDiv.classList.remove("result-showing");
     }
 }
 
@@ -194,6 +166,7 @@ const charactersObject = {
 // Is activated when user presses one of his reaction btns.
 // This function determines who won the round.
 function playRound(){
+    debugger
     if (!resultDiv.classList.contains("result-showing")){
     
         // Gets the random index generated in randomIndexGenerator
