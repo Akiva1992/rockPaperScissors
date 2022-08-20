@@ -26,9 +26,13 @@ userFemale.addEventListener("click", appendUser);
 function appendUser(){
     if (this.classList.contains("female-user-avatar")){
         userGameScreenAvatar.src = "./imgs/female.png"
+        this.classList.add("selected");
+        userMale.classList.remove("selected");
     }
     else{
         userGameScreenAvatar.src = "./imgs/male.png"
+        this.classList.add("selected");
+        userFemale.classList.remove("selected");
     }
     // makes sure user made selection1
     userGameScreenAvatar.classList.add("next-page-c1")
@@ -47,18 +51,27 @@ function appendComputer(){
         computerGameScreenAvatar.classList.add("aj")
         computerGameScreenAvatar.classList.remove("lucy")
         computerGameScreenAvatar.classList.remove("layla")
+        this.classList.add("selected");
+        computerAvatarLucy.classList.remove("selected");
+        computerAvatarLayla.classList.remove("selected");
     }
     else if (this.classList.contains("lucy")){
         computerGameScreenAvatar.src = "./imgs/lucyLeftOrginalSz.png"
         computerGameScreenAvatar.classList.add("lucy-computer")
         computerGameScreenAvatar.classList.remove("aj")
         computerGameScreenAvatar.classList.remove("layla")
+        this.classList.add("selected");
+        computerAvatarAj.classList.remove("selected");
+        computerAvatarLayla.classList.remove("selected");
     }
     else{
         computerGameScreenAvatar.src = "./imgs/laylaOriginal.png"
         computerGameScreenAvatar.classList.add("layla")
         computerGameScreenAvatar.classList.remove("aj")
         computerGameScreenAvatar.classList.remove("lucy")
+        this.classList.add("selected");
+        computerAvatarAj.classList.remove("selected");
+        computerAvatarLucy.classList.remove("selected");
     }
     // makes sure user made selection2
     computerGameScreenAvatar.classList.add("next-page-c2")
