@@ -1,0 +1,148 @@
+:root{
+    --clr-primary--300: #ffffff;
+    --clr-page: #ff737c;
+    --cle-container: #ffd2a2;
+    --clr-header-footer: #3b4970;
+    --clr-facebook-blue: #5271ff;
+    --clr-logo-bg: #d9d9d9;
+
+    --ff-titles: font-family:"Fahkwang", sans-serif;
+    --ff-body: font-family: "Righteous", cursive;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FF737C;
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+} 
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+#start-screen{
+    /* position:relative; */
+    /* width: 100vw; */
+    /* justify-content: center; */
+}
+
+
+.container.start-screen{
+    background-color: #ffd2a2;
+    position:absolute;
+    max-width: 80%;
+    /* height: 70vh;  */
+    top: 25%;
+    bottom: 25%;
+    left: 25%;
+    right: 25%; 
+    /* margin: auto; */
+}
+
+.start-hover{
+    width: 50px;
+    height: auto;
+}
+
+
+
+/* start page btns hover */
+.start-hover:hover{
+    opacity: 0.8; 
+    font-size: 10px;
+} 
+
+/* start page btns click */
+.start-hover:active{
+    opacity: 0.7;
+    /* background-color: #3e8e41; */
+    transform: translateY(4px);
+}
+
+
+#result, #runningScore, #winner {
+    background-color: antiquewhite;
+    border: solid black 5px;
+    height: 25px;
+    margin: 10px;
+    padding:5px;
+}
+
+
+/* Hides the button background */
+button.btn-hide {   
+    background-color: #ffd2a2;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+  } 
+
+
+
+
+
+
+
+#start-screen.screen.display{
+    display: flex;
+}
+
+#show-content.screen.display{
+    display: flex;
+}
+
+#end-screen.screen.display{
+    display: flex;
+    
+}
+
+#end-screen.screen.display{
+    display: flex;
+}
+
+
+#start-screen {
+    display: none;
+    
+}
+
+#show-content {
+    display: none;
+}
+
+
+.game-content.container{
+    width: 80%;
+    height: 80%;
+    position: relative;
+    margin:auto;
+}
+
+#end-screen{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color:bisque;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80%;
+    width: 80%;
+    margin: auto;
+}
+
+

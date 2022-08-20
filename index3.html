@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./rockPaperScissors.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fahkwang:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="start-screen" class="screen display" >
+        <div class="container start-screen">
+            <div id="character-selection-scrn">
+                <div id="user-character">
+                    <button id="male-user" class="btn-hide male-user"><img class="start-hover" src="./imgs/male.png" alt="Male"></button>
+                    <button id="female-user" class="btn-hide female-user" ><img class="start-hover" src="./imgs/female.png" alt="Female"></button>
+                </div>
+                <div id="cumputer-character">
+                    <button id="john-computer" class="btn-hide john-computer"><img class="start-hover computer-img" src="./imgs/johnLeft.png" alt="John"></button>
+                    <button id="lucy-computer" class="btn-hide lucy-computer"><img class="start-hover computer-img" src="./imgs/lucyLeft.png" alt="Lucy"></button>
+                    <button id="layla-computer" class="btn-hide layla-computer"><img class="start-hover computer-img" src="./imgs/laylaLeft.png" alt="Layla"></button>
+                </div>
+            </div>
+            <button id="start-game-btn">Start Game</button>
+        </div>
+    </div>
+    <div id="game-screen" class="screen">
+        <div class="game-content container">
+            <div id="show-content" class="screen" >
+                <div id="user-avatar-div"><img class="user-avatar-img" src="./imgs/male.png" alt="male"></div>
+                <div id="computer-avatar"><img id="computer-avatar-img" src="./imgs/john.png" alt="john"></div>
+                <button class="selection-button" class="player like">Like</button>
+                <button class="selection-button" class="player smile">Smile</button>
+                <button class="selection-button" class="player heart">Heart</button>
+                <button id="generate-scene">Generate new scene</button>
+                <div id="scene"><span id="scene-container" class="scene"></span></div>
+                <div id="result"></div>
+                <div id="runningScore"></div>
+                <div id="winner"></div>
+            </div>
+        <div id="end-screen" class="screen">
+            <div class="result-text">You Win!     
+            </div>
+            <button class="new-game">New Game</button>
+        </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>
+
+<!-- <div id="end-screen" class="screen">
+    <div class="container end-screen">
+        <div id="end-result">
+            <div class="result-text">You Win!     
+            </div>
+            <button class="newGame">New Game</button>
+        </div>
+    </div>
+</div> -->

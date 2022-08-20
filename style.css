@@ -1,121 +1,457 @@
+
+:root{
+    --clr-primary--300: #ffffff;
+    --clr-page: #ff737c;
+    --cle-container: #ffd2a2;
+    --clr-header-footer: #3b4970;
+    --clr-facebook-blue: #5271ff;
+    --clr-logo-bg: #d9d9d9;
+
+    --ff-titles: font-family:"Fahkwang", sans-serif;
+    --ff-body: font-family: "Righteous", cursive;
+}
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    /* display: block; */
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* ///////////////////////////////////////////////////////////////////////// */
+
+/* Set core body defaults */
 body {
-    /* width: 100vw; */
-    margin: 0;
-    padding: 0;
-    background-color: #FF737C;
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  background-color: #ff737c;
+  font-size: 16px;
+}
+
+p,
+h1,
+h2,
+button{
+    font-family: "Righteous", cursive;
+    color:#212022;
+}
+
+h1{
+    font-size: 1.2rem;
+    text-align: center;
+}
+.sticky-header{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 8vh;
+    background-color:#3b4970;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.game-name{
+    font-size: 1.5rem;
+    align-self:center; 
+    color:#fff;
+
+}
+.footer{
+    background-color:#3b4970;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 100vw;
+    height: 5vh;
+}
+
+.footer-text{
+    color: #ffffff;
+    font-size: 1.2rem;
+    display:inline; 
+    align-self: center; 
 }
 
 .container{
-    width: 80%;
-    /* height: 80%; */
-    margin: auto;
-}
-
-#start-screen{
-    margin: auto;
-}
-.container.start-screen{
+    width:90%;
+    max-height: 70%;
+    max-width: 596px;
+    position: absolute;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-}
-#character-selection-scrn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
-.container.start-screen{
-    background-color: #ffd2a2;
-}
-
-#result, #runningScore, #winner {
-    background-color: antiquewhite;
-    border: solid black 5px;
-    height: 25px;
-    margin: 10px;
-    padding:5px;
-}
-
-
-button.btn-hide {
     
+    top: 15%;
+    bottom: 15%;
+    left: 5%;
+    right:5%;
+    margin:0 auto;
+}
+
+/* //////////////////////////Start Screen//////////////////////////////////
+/////////////////////////////////////////////////////////////////////////// */
+
+.inner-container{
+    padding: 1.5em;
+    box-shadow: 8px -1px 7px -3px rgba(76,76,76,0.29);
     background-color: #ffd2a2;
-    border: none;
-    padding: 15px 32px;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em;
+}
+
+.img-start-screen{
+    width: 40%;    
+}
+
+.img-start-screen:active{
+    opacity: 0.8;
+    transform: scale(1.2);
+}
+
+.line-1{
+    border-bottom: 1px solid black;
+}
+
+.user-img-box,
+.computer-img-box{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button{
+    width: 40%;
+    max-width: 142px;
+    background-color: #3b4970;
+    color: #fff;
+    padding: 0.3em 0.5em;
+    border-radius: 6px;
+    font-size: 1.2em;
+}
+
+/* //////////////////////////Instructions Screen//////////////////////////////////
+/////////////////////////////////////////////////////////////////////////// */
+
+.container.instructions{
+    justify-content: space-evenly;
+    background-color: #ffd2a2;
+    padding: 1em;
+}
+
+.instructions-page{
+    font-size: 1.4em;
+}
+
+.instructions-txt{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    /* text-align: center; */
+}
+
+/* //////////////////////////Game Screen://////////////////////////////////
+/////////////////////////////////////////////////////////////////////////// */
+
+/* #game-screen{
+    justify-content: space-between;
+} */
+
+.container.game-screen{
+    justify-content: flex-start;
+    background-color: #ffd2a2;
+}
+
+.bottom-btns{
+    position:absolute;
+    display: flex;
+    justify-content: space-evenly;
+    bottom: 22%;
+    left: 10%;
+    right: 10%;
+    /*  margin-top: 0.2em; */
+}
+
+.new-game-btn,
+.instructions-btn{
+    font-size: 0.8em;
+    width: 30%;
+}
+
+
+/* /////////////////Top of the game screen.//////////////// */
+
+.top-game-container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2em;
+    align-items: center;
+}
+
+.game-screen-avatars{
+    width:30%;
+}
+
+.progress-bar-border{
+    border: solid 0.2em #212022;
+    border-radius: 6px;
+    width: 40%;
+    height: 30%;
+
+}
+
+.progress{
+    width: 10%;
+    height: 100%;
+    background-color:#ff737c;
+    /* text-align: center; */
+    font-family:"Fahkwang", sans-serif;
+}
+
+.avatar-reaction{
+    position: absolute;
+    background-color:#5271ff;
+    font-family:"Righteous", cursive;
+    color: #fff;
+    padding: 0.5em;
+    border-radius: 8px;
+
+    top: 12%;
+    right: 2%;
+    z-index: 2;
+}
+
+/* /////////////////////Main game screen/////////////////////////////////////////// */
+
+.main-game-container{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    border: solid 0.1em #212022;
+
+}
+ /* ////////////////////Game Logo////////////////////////// */
+
+.game-logo{
+    background-color: #5271ff;
+    width: 100%;
+    display: flex;
+    height: 20%;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-container{
+    display: flex;
+    height: 85%;
+    background-color: #d9d9d9;
+    padding: 1% 3%;
+    border-radius: 2px;
+}
+
+.logo-txt{
+    color: #5271ff;
+    font-size: 1.1rem;
+    align-self: center;
+}
+
+/* ///////////////////Game Contents////////////////// */
+
+.game-contents-container{
+    background-color: #fff;
+}
+
+/* ////////////////Profile Container/////////// */
+
+.profile-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em 0;
+    border-bottom: solid 0.1em #212022;
+}
+
+.profile-pic{
+    width: 20%;
+}
+
+.profile-container-left,
+.profile-container-right{
+    display: flex;
+}
+
+.profile-container p {
+    align-self: flex-end;
+}
+
+span {
+    font-family: "Righteous", cursive;
+    padding-right: 1em;
+}
+
+
+/* ////////////////Scene Container/////////// */
+
+.scene-container{
+    border-bottom: solid 0.1em #212022;
+}
+.scene-para{
+    padding: 0.5em 0.3em 0.5em 0.3em;
+    font-size: 1rem;
+    font-family:"Fahkwang", sans-serif;
+}
+
+
+/* ///////////////Reaction Container/////////////////////////////////// */
+
+.reaction-container{
+    display: flex;
+    justify-content: space-around;
+}
+.reaction{
+    width: 15%;
+}
+
+#new-post{
+    margin-top: 1em;
+}
+
+/* ///////////////////////End Screen//////////////////////////////////////////////////////////////////////// */
+
+.container.end-screen{
+    background-color: #ffd2a2;
+    display: flex;
+    justify-content: flex-start;
+    padding: 1em;
+    bottom: 30%;
+}
+
+h1.end-header{
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+p.end-txt{
+    font-size: 1.5rem;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-  } 
-
-
-
-
-
-.start-hover:hover{
-    opacity: 0.5;
-    
-} 
-
-.start-hover:active{
-    opacity: 0.5;
-    /* background-color: #3e8e41; */
-    transform: translateY(4px);
+    margin-bottom: 20%;
 }
 
-
-#start-screen.screen.display{
-    display: block;
+#play-again{
+    justify-content: center;
+    padding: 0.5em 0;
 }
 
-#show-content.screen.display{
-    display: block;
-}
-
-#end-screen.screen.display{
-    display: block;
-    
-}
-
-#end-screen.screen.display{
-    display: flex;
-}
+/* ///////////////////////////////////////Screen Display///////////////////////////////////// */
 
 
 #start-screen {
     display: none;
+}
+
+#instructions-screen{
+    display: none;
+}
+
+#game-screen {
+    display: none;
+}
+
+#end-screen {
+    display: none;
+}
+
+
+#start-screen.display{
+    display: flex;
+}
+
+#instructions-screen.display{
+    display: flex;
+}
+
+#game-screen.display{
+    display: flex;
     
 }
 
-#show-content {
-    display: none;
+#end-screen.display{
+    display: flex;
 }
 
 
-.game-content.container{
-    width: 80%;
-    height: 80%;
-    position: relative;
-    margin:auto;
-}
 
-#end-screen{
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color:bisque;
+
+
+/* .phone{
+    width: 60%;
     position: absolute;
+    z-index: 1;
     top: 0;
     bottom: 0;
-    left: 0;
     right: 0;
-    height: 80%;
-    width: 80%;
+    left: 0;
+    margin: auto;    
+}
+
+#phone-header,
+.phone-contents,
+.scene-container,
+#reaction-container{
+    position: relative;
+    z-index: 2;
+    width: 50%;
     margin: auto;
 }
 
-
+#phone-header{
+    position:absolute;
+    margin: auto;
+} */
