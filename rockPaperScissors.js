@@ -65,7 +65,7 @@ function appendComputer(){
         computerAvatarLayla.classList.remove("selected");
     }
     else{
-        computerGameScreenAvatar.src = "./imgs/laylaOriginal.png"
+        computerGameScreenAvatar.src = "./imgs/laylaLeftOriginal.png"
         computerGameScreenAvatar.classList.add("layla")
         computerGameScreenAvatar.classList.remove("aj")
         computerGameScreenAvatar.classList.remove("lucy")
