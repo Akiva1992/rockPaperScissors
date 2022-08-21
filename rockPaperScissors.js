@@ -11,6 +11,7 @@ const instructionsScreen = document.getElementById("instructions-screen");
 const startScreen = document.getElementById("start-screen");
 const endScreen = document.getElementById("end-screen");
 const gameScreen = document.getElementById("game-screen");
+const profileName = document.querySelector(".profile-name");
 
 startScreen.classList.add("display");
 
@@ -59,6 +60,7 @@ function appendComputer(){
         this.classList.add("selected");
         computerAvatarLucy.classList.remove("selected");
         computerAvatarLayla.classList.remove("selected");
+        profileName.textContent="AJ"
     }
     else if (this.classList.contains("lucy")){
         computerGameScreenAvatar.src = "./imgs/lucyLeftOriginal.png"
@@ -69,6 +71,8 @@ function appendComputer(){
         this.classList.add("selected");
         computerAvatarAj.classList.remove("selected");
         computerAvatarLayla.classList.remove("selected");
+        profileName.textContent="Lucy"
+
     }
     else{
         computerGameScreenAvatar.src = "./imgs/laylaLeftOriginal.png"
@@ -79,6 +83,8 @@ function appendComputer(){
         this.classList.add("selected");
         computerAvatarAj.classList.remove("selected");
         computerAvatarLucy.classList.remove("selected");
+        profileName.textContent="Layla"
+        
     }
     // makes sure user made selection2
     computerGameScreenAvatar.classList.add("next-page-c2")
@@ -123,6 +129,7 @@ const sceneImg = document.querySelector(".scene-img");
 const sceneVideo = document.querySelector(".scene-video");
 const sceneContainer= document.querySelector(".scene-container");
 const buttonList = document.querySelectorAll(".selection-button");
+let progressBar = document.querySelector(".progress");
 
 // Adds initial class name to enable new scene btn.
 avatarReaction.classList.add("result-showing");
@@ -201,7 +208,9 @@ const charactersObject = {
 buttonList.forEach(btn => btn.addEventListener("click", playRound))
 
 
-let playerScore = 0;
+let rScore = 0, pScore=0, sScore=0;
+let pWidth = document.querySelector(".progress").style.width;
+
 
 // Is activated when user presses one of his reaction btns.
 // This function determines who won the round.
@@ -245,68 +254,77 @@ function playRound(){
             if (this.classList.contains("like")){
                 avatarReaction.textContent = "Okay..";
                 avatarReaction.classList.add("result-showing");
-                // runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
             else if (this.classList.contains("smile")){
-                playerScore=0;
+                rScore=0,pScore=0,sScore=0;
+                progressBar.style.width="0%";
                 avatarReaction.textContent = "Hmm..";
                 avatarReaction.classList.add("result-showing");
-                // runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
             else{
-                playerScore++
+                rScore++
+                console.log(rScore);
+                if (rScore==1){
+                    pWidth = widthConcat()
+                    progressBar.style.width=`${pWidth}%`;
+                }
                 avatarReaction.textContent = "Yess!";
                 avatarReaction.classList.add("result-showing");
-                if (playerScore==3){
+                if (rScore>=1 && pScore>=1 && sScore>=1){
                     endScreenFunc();
                 }
-                // runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
         }
         else if (computerSelection == "paper"){
             if (this.classList.contains("like")){
-                playerScore++
                 avatarReaction.textContent = "Yess!";
+                pScore++
+                console.log(pScore);
+                if (pScore==1){
+                    pWidth = widthConcat()
+                    progressBar.style.width=`${pWidth}%`;
+                }
                 avatarReaction.classList.add("result-showing");
-                if (playerScore==3){
+                if (rScore>=1 && pScore>=1 && sScore>=1){
                     endScreenFunc();
                 }
-                // runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
             else if (this.classList.contains("smile")){
                 avatarReaction.textContent = "Okay..";
                 avatarReaction.classList.add("result-showing");
-                // runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
             else{
-                playerScore=0;
+                rScore=0,pScore=0,sScore=0;
+                progressBar.style.width="0%";
                 avatarReaction.textContent = "Hmm..";
                 avatarReaction.classList.add("result-showing");
-                // runningScore.textContent= `${p + playerScore} ${c + computerScore}`
 
             }
         }
         else {
             if (this.classList.contains("like")){
-                playerScore=0;
+                rScore=0,pScore=0,sScore=0;
+                progressBar.style.width="0%";
                 avatarReaction.textContent = "Hmm.."
                 avatarReaction.classList.add("result-showing");
-                // runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
             else if (this.classList.contains("smile")){
-                playerScore++
+                sScore++
+                console.log(sScore);
+                if (sScore==1){
+                    pWidth = widthConcat()
+                    progressBar.style.width=`${pWidth}%`;
+                }
                 avatarReaction.textContent = "Yess!";
                 avatarReaction.classList.add("result-showing");
-                if (playerScore==3){
+                if (rScore>=1 && pScore>=1 && sScore>=1){
                     endScreenFunc();
                 }
-                // runningScore.textContent= `${p + playerScore} ${c + computerScore}`
 
             }
             else{
                 avatarReaction.textContent = "Okay"
                 avatarReaction.classList.add("result-showing");
-                // runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
         }
     }
@@ -315,6 +333,7 @@ function playRound(){
 const backBtn = document.getElementById("back");
 const tipsBtn = document.querySelector(".tips-btn");
 const tipsScreen = document.getElementById("tips-screen");
+tipsScreen.classList.remove("display");
 
 
 tipsBtn.addEventListener("click",tipsScreenFunc);
@@ -347,4 +366,9 @@ newGame.addEventListener("click", newGameFunc);
 
 function newGameFunc(){
     document.location.reload(true)
+}
+
+function widthConcat(){
+    let pWidth=parseInt(document.querySelector(".progress").style.width);
+    return pWidth+=33.3;  
 }

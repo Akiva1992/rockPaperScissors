@@ -240,7 +240,7 @@ button{
 .top-game-container{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2em;
+    margin-bottom: 0.5em;
     align-items: center;
 }
 
@@ -257,7 +257,7 @@ button{
 }
 
 .progress{
-    width: 10%;
+    width:0%;
     height: 100%;
     background-color:#ff737c;
     /* text-align: center; */
