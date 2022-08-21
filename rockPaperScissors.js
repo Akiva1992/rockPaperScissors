@@ -9,7 +9,10 @@ const computerGameScreenAvatar = document.getElementById("computer-game-screen-a
 const nextPgStartScreenBtn = document.querySelector(".next-page-btn.start-screen");
 const instructionsScreen = document.getElementById("instructions-screen");
 const startScreen = document.getElementById("start-screen");
+const endScreen = document.getElementById("end-screen");
 const gameScreen = document.getElementById("game-screen");
+
+startScreen.classList.add("display");
 
 
 // console.log(nextPgStartScreenBtn);
@@ -204,7 +207,7 @@ let playerScore = 0;
 // This function determines who won the round.
 function playRound(){
     if (!avatarReaction.classList.contains("result-showing")){
-    
+        
         // Gets the random index generated in randomIndexGenerator
         let sceneIndexValue ="";
         if (sceneContainer.classList.contains("scene-of-text")){
@@ -233,10 +236,11 @@ function playRound(){
             computerSelection = charactersObject.layla[sceneIndexValue];
         }
         console.log(computerSelection)    
-
+        
         
         ////like==rock, smile==paper, heart==scissors.
-
+        
+        // debugger
         if (computerSelection == "rock"){
             if (this.classList.contains("like")){
                 avatarReaction.textContent = "Okay..";
@@ -253,6 +257,9 @@ function playRound(){
                 playerScore++
                 avatarReaction.textContent = "Yess!";
                 avatarReaction.classList.add("result-showing");
+                if (playerScore==3){
+                    endScreenFunc();
+                }
                 // runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
         }
@@ -261,6 +268,9 @@ function playRound(){
                 playerScore++
                 avatarReaction.textContent = "Yess!";
                 avatarReaction.classList.add("result-showing");
+                if (playerScore==3){
+                    endScreenFunc();
+                }
                 // runningScore.textContent= `${p + playerScore} ${c + computerScore}`
             }
             else if (this.classList.contains("smile")){
@@ -287,6 +297,9 @@ function playRound(){
                 playerScore++
                 avatarReaction.textContent = "Yess!";
                 avatarReaction.classList.add("result-showing");
+                if (playerScore==3){
+                    endScreenFunc();
+                }
                 // runningScore.textContent= `${p + playerScore} ${c + computerScore}`
 
             }
@@ -297,4 +310,41 @@ function playRound(){
             }
         }
     }
+}
+
+const backBtn = document.getElementById("back");
+const tipsBtn = document.querySelector(".tips-btn");
+const tipsScreen = document.getElementById("tips-screen");
+
+
+tipsBtn.addEventListener("click",tipsScreenFunc);
+
+
+backBtn.addEventListener("click", tipsScreenOffFunc);
+
+function tipsScreenFunc(){
+    tipsScreen.classList.add("display");
+    gameScreen.classList.remove("display");
+}
+
+function tipsScreenOffFunc(){
+    tipsScreen.classList.remove("display");
+    gameScreen.classList.add("display");
+}
+
+
+function endScreenFunc(){
+    playerScore=0;  
+    gameScreen.classList.remove("display");
+    endScreen.classList.add("display");
+}
+
+const playAgain = document.getElementById("play-again");
+const newGame = document.querySelector(".new-game-btn")
+
+playAgain.addEventListener("click", newGameFunc);
+newGame.addEventListener("click", newGameFunc);
+
+function newGameFunc(){
+    document.location.reload(true)
 }

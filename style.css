@@ -222,14 +222,14 @@ button{
     position:absolute;
     display: flex;
     justify-content: space-evenly;
-    bottom: 18%;
+    bottom: 10%;
     left: 10%;
     right: 10%;
     /*  margin-top: 0.2em; */
 }
 
 .new-game-btn,
-.instructions-btn{
+.tips-btn{
     font-size: 0.8em;
     width: 30%;
 }
@@ -289,6 +289,7 @@ button{
     display: flex;
     flex-direction: column;
     width: 90%;
+    max-height: 60%;
     border: solid 0.1em #212022;
 
 }
@@ -433,6 +434,36 @@ p.end-txt{
     padding: 0.5em 0;
 }
 
+
+
+
+/* ///////////////////////Tips Screen//////////////////////////////////////////////////////////////////////// */
+
+.container.tips-screen{
+    background-color: #ffd2a2;
+    display: flex;
+    justify-content: flex-start;
+    padding: 1em;
+    bottom: 20%;
+    border-radius: 2px;
+}
+
+h1.tips-header{
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+p.tips-txt{
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+#back{
+    justify-content: center;
+    padding: 0.5em 0;
+}
+
 /* ///////////////////////////////////////Screen Display///////////////////////////////////// */
 
 
@@ -445,6 +476,10 @@ p.end-txt{
 }
 
 #game-screen {
+    display: none;
+}
+
+#tips-screen{
     display: none;
 }
 
@@ -464,6 +499,10 @@ p.end-txt{
 #game-screen.display{
     display: flex;
     
+}
+
+#tips-screen.display{
+    display: flex;
 }
 
 #end-screen.display{
