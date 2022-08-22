@@ -1,5 +1,5 @@
 ////////////////////////////////Start Screen//////////////////////////////////////////////
-// debugger
+
 // Start screen variables.
 const maleUser = document.getElementById("male-user");
 const femaleUser = document.getElementById("female-user");

@@ -16,7 +16,6 @@ const profileName = document.querySelector(".profile-name");
 startScreen.classList.add("display");
 
 
-// console.log(nextPgStartScreenBtn);
 
 
 ////////////////////////////User Avatar Selection/////////////////////////////
@@ -135,7 +134,7 @@ let progressBar = document.querySelector(".progress");
 avatarReaction.classList.add("result-showing");
 
 
-const paraArr=['"Time is precious. Waste it wisely."','"Back in 5 minutes (If not, read this status again)."','`"If you really loved me, you would say it on my Facebook Wall."','"Staying connected is more important than making your point."','"Staying connected is more important than making your point."','"Why do you think you and I are such good friends?"'];
+const paraArr=['"Time is precious. Waste it wisely."','"Back in 5 minutes (If not, read this status again)."','"If you really loved me, you would say it on my Facebook Wall."','"Staying connected is more important than making your point."','"Staying connected is more important than making your point."','"Why do you think you and I are such good friends?"'];
 
 function randomPara() {
     let randomPara = Math.floor(Math.random() * paraArr.length)
@@ -169,14 +168,19 @@ function implementScene(){
             sceneImg.classList.remove("show");
             sceneVideo.classList.remove("show");
             scenePara.textContent = paraArr[i];
-            sceneContainer.classList="scene-of-text";
+            sceneContainer.classList.add("scene-of-text");
+            sceneContainer.classList.remove("scene-of-image");
+            sceneContainer.classList.remove("scene-of-video");
+
         }
         else if (newScene == 1){
             scenePara.classList.remove("show");
             sceneImg.classList.add("show");
             sceneVideo.classList.remove("show");
             sceneImg.src="https://picsum.photos/300/150";
-            sceneContainer.classList="scene-of-image";
+            sceneContainer.classList.add("scene-of-image");
+            sceneContainer.classList.remove("scene-of-text");
+            sceneContainer.classList.remove("scene-of-video");
         }
         else{
             let j = randomVideo();
@@ -184,7 +188,9 @@ function implementScene(){
             sceneImg.classList.remove("show");
             sceneVideo.classList.add("show");
             sceneVideo.src = videoArr[j];
-            sceneContainer.classList="scene-of-video";
+            sceneContainer.classList.add("scene-of-video");
+            sceneContainer.classList.remove("scene-of-text");
+            sceneContainer.classList.remove("scene-of-image");
         }
         // // These two lines remove the last result from the div, and add class to enable user to react 
         // resultDiv.textContent="";
@@ -210,6 +216,7 @@ buttonList.forEach(btn => btn.addEventListener("click", playRound))
 
 let rScore = 0, pScore=0, sScore=0;
 let pWidth = document.querySelector(".progress").style.width;
+let pBar = document.querySelector(".progress");
 
 
 // Is activated when user presses one of his reaction btns.
@@ -249,27 +256,25 @@ function playRound(){
         
         ////like==rock, smile==paper, heart==scissors.
         
-        // debugger
         if (computerSelection == "rock"){
             if (this.classList.contains("like")){
                 avatarReaction.textContent = "Okay..";
                 avatarReaction.classList.add("result-showing");
             }
             else if (this.classList.contains("smile")){
+                avatarReaction.classList.add("result-showing");
+                avatarReaction.textContent = "Hmm..";
                 rScore=0,pScore=0,sScore=0;
                 progressBar.style.width="0%";
-                avatarReaction.textContent = "Hmm..";
-                avatarReaction.classList.add("result-showing");
             }
             else{
                 rScore++
-                console.log(rScore);
-                if (rScore==1){
-                    pWidth = widthConcat()
-                    progressBar.style.width=`${pWidth}%`;
-                }
-                avatarReaction.textContent = "Yess!";
                 avatarReaction.classList.add("result-showing");
+                avatarReaction.textContent = "Yess!";
+                if (rScore==1){
+                    pWidth = widthConcat();
+                    progressBar.style.width=`${pWidth}px`;
+                }
                 if (rScore>=1 && pScore>=1 && sScore>=1){
                     endScreenFunc();
                 }
@@ -277,54 +282,53 @@ function playRound(){
         }
         else if (computerSelection == "paper"){
             if (this.classList.contains("like")){
-                avatarReaction.textContent = "Yess!";
                 pScore++
+                avatarReaction.classList.add("result-showing");
+                avatarReaction.textContent = "Yess!";
                 console.log(pScore);
                 if (pScore==1){
-                    pWidth = widthConcat()
-                    progressBar.style.width=`${pWidth}%`;
+                    pWidth = widthConcat();
+                    progressBar.style.width=`${pWidth}px`;
                 }
-                avatarReaction.classList.add("result-showing");
                 if (rScore>=1 && pScore>=1 && sScore>=1){
                     endScreenFunc();
                 }
             }
             else if (this.classList.contains("smile")){
-                avatarReaction.textContent = "Okay..";
                 avatarReaction.classList.add("result-showing");
+                avatarReaction.textContent = "Okay..";
             }
             else{
+                avatarReaction.classList.add("result-showing");
+                avatarReaction.textContent = "Hmm..";
                 rScore=0,pScore=0,sScore=0;
                 progressBar.style.width="0%";
-                avatarReaction.textContent = "Hmm..";
-                avatarReaction.classList.add("result-showing");
-
             }
         }
         else {
             if (this.classList.contains("like")){
+                avatarReaction.classList.add("result-showing");
+                avatarReaction.textContent = "Hmm.."
                 rScore=0,pScore=0,sScore=0;
                 progressBar.style.width="0%";
-                avatarReaction.textContent = "Hmm.."
-                avatarReaction.classList.add("result-showing");
             }
             else if (this.classList.contains("smile")){
                 sScore++
                 console.log(sScore);
+                avatarReaction.classList.add("result-showing");
+                avatarReaction.textContent = "Yess!";
                 if (sScore==1){
                     pWidth = widthConcat()
-                    progressBar.style.width=`${pWidth}%`;
+                    progressBar.style.width=`${pWidth}px`;
                 }
-                avatarReaction.textContent = "Yess!";
-                avatarReaction.classList.add("result-showing");
                 if (rScore>=1 && pScore>=1 && sScore>=1){
                     endScreenFunc();
                 }
 
             }
             else{
-                avatarReaction.textContent = "Okay"
                 avatarReaction.classList.add("result-showing");
+                avatarReaction.textContent = "Okay"
             }
         }
     }
@@ -369,6 +373,8 @@ function newGameFunc(){
 }
 
 function widthConcat(){
-    let pWidth=parseInt(document.querySelector(".progress").style.width);
-    return pWidth+=33.3;  
+    const pBar = document.querySelector(".progress")
+    let pBarWidth = pBar.getBoundingClientRect().width;
+    console.log(pBarWidth);
+    return pBarWidth+=57.4375;  
 }

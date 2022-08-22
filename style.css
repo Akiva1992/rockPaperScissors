@@ -176,11 +176,12 @@ h1{
 button{
     width: 40%;
     max-width: 142px;
+    min-width:112px;
     background-color: #3b4970;
     color: #fff;
     padding: 0.3em 0.5em;
     border-radius: 6px;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 /* //////////////////////////Instructions Screen//////////////////////////////////
@@ -230,6 +231,7 @@ button{
 
 .new-game-btn,
 .tips-btn{
+    min-width: 83px;
     font-size: 0.8em;
     width: 30%;
 }
@@ -257,7 +259,8 @@ button{
 }
 
 .progress{
-    width:0%;
+    box-sizing: border-box;
+    width:0;
     height: 100%;
     background-color:#ff737c;
     /* text-align: center; */
@@ -273,7 +276,7 @@ button{
     color: #fff;
     padding: 0.5em;
     border-radius: 8px;
-
+    
     top: 11%;
     right: 2%;
     z-index: 2;
@@ -289,24 +292,26 @@ button{
     display: flex;
     flex-direction: column;
     width: 90%;
-    max-height: 60%;
+    max-height: 390px;
+    max-width: 380px;
     border: solid 0.1em #212022;
-
+    border-radius: 2px;
+    background-color: #fff;
+    
 }
- /* ////////////////////Game Logo////////////////////////// */
+/* ////////////////////Game Logo////////////////////////// */
 
 .game-logo{
     background-color: #5271ff;
     width: 100%;
     display: flex;
-    height: 20%;
     align-items: center;
     justify-content: center;
 }
 
 .logo-container{
     display: flex;
-    height: 85%;
+    height: 80%;
     background-color: #d9d9d9;
     padding: 1% 3%;
     border-radius: 2px;
@@ -321,7 +326,9 @@ button{
 /* ///////////////////Game Contents////////////////// */
 
 .game-contents-container{
-    background-color: #fff;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ////////////////Profile Container/////////// */
@@ -330,6 +337,7 @@ button{
     display: flex;
     justify-content: space-between;
     padding: 0.5em 0;
+    border-top: solid 0.1em #212022;
     border-bottom: solid 0.1em #212022;
 }
 
@@ -356,10 +364,11 @@ span {
 
 .scene-container{
     border-bottom: solid 0.1em #212022;
+    height: 80%;
 }
  p.scene-para{
     padding: 0.5em 0.3em 0.5em 0.3em;
-    border-bottom: solid 0.01em #212022;
+    /* border-bottom: solid 0.01em #212022; */
     font-family:"Fahkwang", sans-serif;
     font-size: 1.2rem;
 } 
@@ -368,19 +377,21 @@ span {
     position: relative;
     display: none;
     font-family:"Fahkwang", sans-serif;
+    width: 100%;
+    height: 100%;
 }
 .scene-img{
     width: 100%;
-    /* height: 100%; */
+    height: 100%;
     border-radius: 2px;
     position: relative;
     display: none;
-    /* margin: auto; */
 }
 .scene-video{
     display: none;
     position: relative;
     width: 100%;
+    height: 100%;
 }
 
 .scene-para.show{
@@ -400,6 +411,10 @@ span {
 .reaction-container{
     display: flex;
     justify-content: space-around;
+    width: 100%;
+    height: 20%;
+    /* border: #212022 0.1em solid; */
+    align-items: flex-start;
 }
 .reaction{
     width: 15%;
@@ -511,30 +526,6 @@ p.tips-txt{
 
 
 
-
-
-/* .phone{
-    width: 60%;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    margin: auto;    
+@media (width>497) {
+    
 }
-
-#phone-header,
-.phone-contents,
-.scene-container,
-#reaction-container{
-    position: relative;
-    z-index: 2;
-    width: 50%;
-    margin: auto;
-}
-
-#phone-header{
-    position:absolute;
-    margin: auto;
-} */
