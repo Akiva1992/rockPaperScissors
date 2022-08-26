@@ -1,29 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fahkwang:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Righteous&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fahkwang:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Righteous&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Document</title>
 </head>
+
 <body>
-    <div class="sticky-header"><p class="game-name">The Game</p></div>
-    <div id="start-screen" class="display">
+    <div class="sticky-header">
+        <p class="game-name">The Game</p>
+    </div>
+    <div id="start-screen1" class="display">
         <div class="container start-screen">
             <div class="inner-container">
                 <div id="user-avatar-select">
-                        <h1>Choose your Avatar</h1>
-                        <div class="user-img-box">
-                            <img class="male-user-avatar img-start-screen" src="./imgs/maleOriginal.png" alt="">
-                            <img class="female-user-avatar img-start-screen" src="./imgs/femaleOriginal.png" alt="">
-                        </div>
+                    <h1>Choose your Avatar</h1>
+                    <div class="user-img-box">
+                        <img class="male-user-avatar img-start-screen" src="./imgs/maleOriginal.png" alt="">
+                        <img class="female-user-avatar img-start-screen" src="./imgs/femaleOriginal.png" alt="">
+                    </div>
                 </div>
-                <div class="line-1"></div>
+            </div>
+            <button class="next-page-btn1 start-screen">Next Page</button>
+        </div>
+    </div>
+    <div id="start-screen2">
+        <div class="container start-screen">
+            <div class="inner-container">
                 <div id="computer-avatar-select">
                     <h1>Choose your friend's Avatar</h1>
                     <div class="computer-img-box">
@@ -33,24 +45,27 @@
                     </div>
                 </div>
             </div>
-            <button class="next-page-btn start-screen">Next Page</button>
+            <button class="next-page-btn2 start-screen">Next Page</button>
         </div>
     </div>
     <div id="instructions-screen">
-    <div class="container instructions">
-        <h1>Some Instructions</h1>
-        <div class="instructions-txt">
-            <div>
-                <p class="instructions1 instructions-page">In this game, your virtual friend  will post something on their social media and you wil need to understand from their reaction if they liked your reaction.</p>
-                <p class="instructions2 instructions-page">To connect to your friend, try to learn what reaction they like the most!</p>
-                        </div>
+        <div class="container instructions">
+            <h1>Game Instructions</h1>
+            <div class="instructions-txt">
+                <div>
+                    <p class="instructions1 instructions-page">In this game, your objective is to match the reaction
+                        type with the post type, your friend's reaction will give you a clue on if you're doing it
+                        right.</p>
+                    <p class="instructions2 instructions-page">To finish the game you need to react correctly to the
+                        three types of posts with no mistakes between them.</p>
+                </div>
                 <h2 class="instructions3">Good Luck!!</h2>
             </div>
-            
+
             <button class="next-page instructions-screen">Next Page</button>
         </div>
     </div>
-</div>
+    </div>
     <div id="game-screen">
         <div class="avatar-reaction">I'll react here..</div>
         <div class="container game-screen">
@@ -64,7 +79,8 @@
             <div class="main-game-container">
                 <div class="game-logo">
                     <div class="logo-container">
-                        <p class="logo-txt">Space<p>
+                        <p class="logo-txt">Space
+                        <p>
                     </div>
                 </div>
                 <div class="game-contents-container">
@@ -83,7 +99,7 @@
                         <img class="scene-img show" src="./imgs/openingImg.png" alt="">
                         <video class="scene-video" source src="./vids/ducks.mp4" controls type="video/mp4">
                             Your browser does not support the video tag.
-                          </video>
+                        </video>
                     </div>
                     <div class="reaction-container">
                         <img class="reaction selection-button like" src="./imgs/👍.svg" alt="">
@@ -93,11 +109,13 @@
                 </div>
             </div>
             <button id="new-post">New Post</button>
-        </div>
-        <div class="bottom-btns">
-            <button class="new-game-btn">New Game</button>
-            <button class="tips-btn">Tips</button>
-        </div>
+        </div> <!-- container game-screen -->
+        <bottom-btn-container>
+            <div class="bottom-btns">
+                <button class="new-game-btn">New Game</button>
+                <button class="tips-btn">Tips</button>
+            </div>
+        </bottom-btn-container>
     </div>
     <div id="end-screen">
         <div class="container end-screen">
@@ -109,14 +127,18 @@
     <div id="tips-screen">
         <div class="container tips-screen">
             <h1 class="tip-header">A few tips..</h1>
-            <p class="tips-txt">Every character you choose to play with, has his own preferences.</p>
-            <p class="tips-txt">For example Layla will always prefer a like on picture she posted, and AJ will always prefer a heart on a video he posts. try to remember each friend's preferences </p>
+            <p class="tips-txt">Every character/friend you choose to play with, has his own preferences.</p>
+            <p class="tips-txt">For example for Max the appropriate response for a text post is a a smiley and for a
+                picture a reaction of a like. You need to try andremember each friend's preferences </p>
             <p class="tips-txt">The game is over when you remember all three preferences.</p>
             <button id="back" class="back-btn">Back</button>
         </div>
     </div>
-    <div class="footer"><p class="footer-text">CC</p></div>
+    <div class="footer">
+        <p class="footer-text">CC</p>
+    </div>
 
     <script src="./rockPaperScissors.js"></script>
 </body>
+
 </html>

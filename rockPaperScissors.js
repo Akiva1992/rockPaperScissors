@@ -6,14 +6,16 @@ const computerAvatarLucy = document.querySelectorAll(".computer-avatar")[1];
 const computerAvatarLayla = document.querySelectorAll(".computer-avatar")[2];
 const userGameScreenAvatar = document.getElementById("user-game-screen-avatar");
 const computerGameScreenAvatar = document.getElementById("computer-game-screen-avatar");
-const nextPgStartScreenBtn = document.querySelector(".next-page-btn.start-screen");
+const nextPgStartScreenBtn1 = document.querySelector(".next-page-btn1.start-screen");
+const nextPgStartScreenBtn2 = document.querySelector(".next-page-btn2.start-screen");
 const instructionsScreen = document.getElementById("instructions-screen");
-const startScreen = document.getElementById("start-screen");
+const startScreen1 = document.getElementById("start-screen1");
+const startScreen2 = document.getElementById("start-screen2");
 const endScreen = document.getElementById("end-screen");
 const gameScreen = document.getElementById("game-screen");
 const profileName = document.querySelector(".profile-name");
 
-startScreen.classList.add("display");
+startScreen1.classList.add("display");
 
 
 
@@ -39,6 +41,17 @@ function appendUser(){
     }
     // makes sure user made selection1
     userGameScreenAvatar.classList.add("next-page-c1")
+}
+
+// Event listener for screen transition.
+nextPgStartScreenBtn1.addEventListener("click",nextPage1);
+
+// Transitions to the Game Screen.
+function nextPage1(){
+    if (startScreen1.classList.contains("display") && userGameScreenAvatar.classList.contains("next-page-c1")){
+        startScreen1.classList.remove("display")
+        startScreen2.classList.add("display")
+    }
 }
 
 //////////////////////////Computer Avatar Selection/////////////////////////////
@@ -92,13 +105,13 @@ function appendComputer(){
 ///////////////Next page Button/////////////////////////
 
 // Event listener for screen transition.
-nextPgStartScreenBtn.addEventListener("click",nextPage);
+nextPgStartScreenBtn2.addEventListener("click",nextPage2);
 
 // Transitions to the Game Screen.
-function nextPage(){
-    if (startScreen.classList.contains("display") && userGameScreenAvatar.classList.contains("next-page-c1")&& computerGameScreenAvatar.classList.contains("next-page-c2")){
-        startScreen.classList.remove("display")
-        instructionsScreen.classList.add("display")
+function nextPage2(){
+    if (startScreen2.classList.contains("display") && computerGameScreenAvatar.classList.contains("next-page-c2")){
+        startScreen2.classList.remove("display");
+        instructionsScreen.classList.add("display");
     }
 }
 
@@ -128,8 +141,9 @@ const sceneImg = document.querySelector(".scene-img");
 const sceneVideo = document.querySelector(".scene-video");
 const sceneContainer= document.querySelector(".scene-container");
 const buttonList = document.querySelectorAll(".selection-button");
-let progressBar = document.querySelector(".progress");
-
+const likeBtn = document.querySelector(".like");
+const smileBtn = document.querySelector(".smile");
+const heartBtn = document.querySelector(".heart");
 // Adds initial class name to enable new scene btn.
 avatarReaction.classList.add("result-showing");
 
@@ -193,16 +207,35 @@ function implementScene(){
             sceneContainer.classList.remove("scene-of-image");
         }
         // // These two lines remove the last result from the div, and add class to enable user to react 
-        // resultDiv.textContent="";
+        // Makes sure reaction btns cannot be clicked before the game starts (new post was clicked).
+        newPostBtn.classList.add("clicked");
+        // enables the playRound to activate.
         avatarReaction.classList.remove("result-showing");
+        // Makes sure the reaction btn can only be pressed once.
+        buttonList.forEach(btn => btn.addEventListener("click", buttonSelected));
+        // Removes the clicked btn style.
+        buttonList.forEach(btn => btn.classList.remove("btn-selected"));
     }
 }
 
 
 
-// btn event listener.
-buttonList.forEach(btn => btn.addEventListener("click", playRound))
+// btn event listener for actual game to play.
+buttonList.forEach(btn => btn.addEventListener("click", playRound));
 
+// btn event listener for reaction btn style.
+buttonList.forEach(btn => btn.addEventListener("click", buttonSelected))
+
+// Adds a stle to the selected reaction btn.
+function buttonSelected(){
+    if (newPostBtn.classList.contains("clicked")){
+        this.classList.add("btn-selected");
+        buttonList.forEach(btn => btn.removeEventListener("click", buttonSelected))
+        // newPostBtn.classList.add("clicked")
+    }
+}
+
+// Different computer avatar set of rps.
 const charactersObject = {
     aj: ["scissors","rock","paper"],
     lucy:["scissor","paper","rock"],
@@ -210,11 +243,10 @@ const charactersObject = {
 }
 
 
-// btn event listener.
-buttonList.forEach(btn => btn.addEventListener("click", playRound))
-
-
+// Meant to keep track if one was answered correctly. 
 let rScore = 0, pScore=0, sScore=0;
+
+//Progress bar variables. 
 let pWidth = document.querySelector(".progress").style.width;
 let pBar = document.querySelector(".progress");
 
@@ -265,7 +297,7 @@ function playRound(){
                 avatarReaction.classList.add("result-showing");
                 avatarReaction.textContent = "Hmm..";
                 rScore=0,pScore=0,sScore=0;
-                progressBar.style.width="0%";
+                pBar.style.width="0%";
             }
             else{
                 rScore++
@@ -273,7 +305,7 @@ function playRound(){
                 avatarReaction.textContent = "Yess!";
                 if (rScore==1){
                     pWidth = widthConcat();
-                    progressBar.style.width=`${pWidth}px`;
+                    pBar.style.width=`${pWidth}%`;
                 }
                 if (rScore>=1 && pScore>=1 && sScore>=1){
                     endScreenFunc();
@@ -288,7 +320,7 @@ function playRound(){
                 console.log(pScore);
                 if (pScore==1){
                     pWidth = widthConcat();
-                    progressBar.style.width=`${pWidth}px`;
+                    pBar.style.width=`${pWidth}%`;
                 }
                 if (rScore>=1 && pScore>=1 && sScore>=1){
                     endScreenFunc();
@@ -302,7 +334,7 @@ function playRound(){
                 avatarReaction.classList.add("result-showing");
                 avatarReaction.textContent = "Hmm..";
                 rScore=0,pScore=0,sScore=0;
-                progressBar.style.width="0%";
+                pBar.style.width="0%";
             }
         }
         else {
@@ -310,7 +342,7 @@ function playRound(){
                 avatarReaction.classList.add("result-showing");
                 avatarReaction.textContent = "Hmm.."
                 rScore=0,pScore=0,sScore=0;
-                progressBar.style.width="0%";
+                pBar.style.width="0%";
             }
             else if (this.classList.contains("smile")){
                 sScore++
@@ -319,7 +351,7 @@ function playRound(){
                 avatarReaction.textContent = "Yess!";
                 if (sScore==1){
                     pWidth = widthConcat()
-                    progressBar.style.width=`${pWidth}px`;
+                    pBar.style.width=`${pWidth}%`;
                 }
                 if (rScore>=1 && pScore>=1 && sScore>=1){
                     endScreenFunc();
@@ -362,19 +394,31 @@ function endScreenFunc(){
     endScreen.classList.add("display");
 }
 
+
+
 const playAgain = document.getElementById("play-again");
 const newGame = document.querySelector(".new-game-btn")
 
 playAgain.addEventListener("click", newGameFunc);
 newGame.addEventListener("click", newGameFunc);
 
+
+// Starts new game by refreshing page.
 function newGameFunc(){
     document.location.reload(true)
 }
 
+
 function widthConcat(){
-    const pBar = document.querySelector(".progress")
+    // const pBar = document.querySelector(".progress")
     let pBarWidth = pBar.getBoundingClientRect().width;
     console.log(pBarWidth);
-    return pBarWidth+=57.4375;  
+    return pBarWidth+=6;  
 }
+
+const pageBody = document.getElementsByTagName("body");
+// let bodyWidth = pageBody.getBoundingClientRect().width;
+
+// if (body >524){
+//     console.log("yess")
+// }
