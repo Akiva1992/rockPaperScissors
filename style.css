@@ -27,12 +27,15 @@ p,
 figure,
 blockquote,
 dl,
-dd {
+dd,
+ul,
+li {
   margin: 0;
+  padding: 0;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role='list'],
+ul,
 ol[role='list'] {
   list-style: none;
 }
@@ -223,7 +226,12 @@ button{
     box-shadow: 8px -1px 7px -3px rgba(76,76,76,0.29);
 }
 
-button#new-post{
+.new-post-container{
+    display: block; 
+    margin-bottom: 1em;  
+}
+
+button.new-post{
     width: 25%;
     max-width: 142px;
     min-width:92px;
@@ -265,21 +273,74 @@ button#new-post{
     width:30%;
 }
 
-.progress-bar-border{
-    border: solid 0.2em #212022;
+.progress-container{
+    border: solid 0.1em #212022;
     border-radius: 6px;
-    width: 40%;
-    height: 30%;
+    min-width: 40%;
+    background-color:#ff737c;
+    padding: 0.2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
 }
 
-.progress{
-    box-sizing: border-box;
-    width:0;
-    height: 100%;
-    background-color:#ff737c;
-    /* text-align: center; */
-    font-family:"Fahkwang", sans-serif;
+h1.progress{
+    font-size: 0.8rem;
+    text-align: center;
+    color:#3b2f2e;
+    display: block;
+}
+
+.progress-elements{
+    display: flex;
+    /* flex-direction: column; */
+    gap: 1em;
+    justify-content: center;
+    flex-wrap: wrap;
+
+
+
+}
+
+ul.progress{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+li{
+    font-size: 0.6rem;
+    font-family:"Righteous", cursive;
+    color:#3b2f2e;
+}
+
+
+li.checkbox {
+    width: 30%;
+    height: 30%;
+    min-width: 15px;
+    min-height: 15px;
+    background-color: #f5f5f5;
+    border: 1px black solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.p-txt-box,
+.p-img-box,
+.p-video-box{
+    display: none;
+    font-size: 1em;
+    /* width: 100%; */
+}
+
+.p-txt-box.done,
+.p-img-box.done,
+.p-video-box.done{
+    display: block;
+    /* justify-content: center; */
+    /* text-align:center; */
 }
 
 .avatar-reaction{
@@ -446,7 +507,7 @@ span {
     filter: sepia(100%);
 }
 
-#new-post{
+.new-post{
     margin: 1em 0;
 }
 
@@ -557,9 +618,21 @@ p.tips-txt{
     display: flex;
 }
 
+.bottom-btn-container.in-game-container{
+    display: none;
+}
+
 
 
 @media (min-width:408px) {
+
+    .bottom-btn-container{
+        display: none;
+    }
+
+    .new-post-container{
+        display: none;
+    }
 
     #game-screen{
         /* justify-content: space-between; */
@@ -603,35 +676,37 @@ p.tips-txt{
         top: 30%;
     }
 
-    button#new-post{
+    .bottom-btn-container.in-game-container{
+        display: none;
+    }
+    
+    .bottom-btn-container.in-game-container{
+        display: block;
+        position:relative;
+    
+        position:absolute;
+        bottom: 45%;
+        /* left: 74%; */
+        right: 12%;
+        margin-top: 0.2em;
+    }
+
+    
+    .bottom-btns.in-game-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 3;
+        gap: 0.5em; 
+    }
+
+    .new-post{
+        display: block;
         width: 20%;
         max-width: 142px;
         min-width:92px;
-        /* margin: 0.2em 0; */
-        position: absolute;
+    }
 
-        right: 1%;
-        top: 40%;
-
-    }
-    
-    .bottom-btn-container{
-        position:relative;
-    }
-    
-    .bottom-btns{
-        z-index: 3;
-        position:absolute;
-        bottom: 35%;
-        left: 74%;
-        /* right: 1%; */
-        display: flex;
-        flex-direction: column;
-        gap: 0.5em;
-        margin-top: 0.2em;
-        /* justify-content: space-evenly; */
-    }
-    
     .new-game-btn,
     .tips-btn{
         min-width: 83px;
@@ -651,7 +726,7 @@ p.tips-txt{
         border-radius: 8px;
         
         top: 11%;
-        right: 12%;
+        right: 10%;
         z-index: 2;
     }
 }

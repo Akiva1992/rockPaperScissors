@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            background-color: bisque;
+            min-width: 300px;
+        }
+        .progress-container {
+            display: flex;
+            gap: 1em;
+        }
+
+        ul{
+            list-style:none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        li{
+            text-decoration: none;
+        }
+        .box {
+            width: 10%;
+            height: 10%;
+            min-width: 20px;
+            min-height: 20px;
+            font-size: 1em;
+            background-color: gray;
+            border: 1px black solid;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Correct Reactions</h1>
+        <div class="progress-container">
+            <ul class="txt-progress">
+                <li>Text</li>
+                <li class="box text-box"></li>
+            </ul>
+            <ul class="img-progress">
+                <li>Picture</li>
+                <li class="box Video-box"></li>
+            </ul>
+            <ul class="video-porgress">
+                <li>Video</li>
+                <li class="box Video-box"></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

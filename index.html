@@ -54,10 +54,9 @@
             <div class="instructions-txt">
                 <div>
                     <p class="instructions1 instructions-page">In this game, your objective is to match the reaction
-                        type with the post type, your friend's reaction will give you a clue on if you're doing it
-                        right.</p>
+                        type with the post type, your friend's reaction will give you a clue if you're on the right direction.</p>
                     <p class="instructions2 instructions-page">To finish the game you need to react correctly to the
-                        three types of posts with no mistakes between them.</p>
+                        three types of posts.</p>
                 </div>
                 <h2 class="instructions3">Good Luck!!</h2>
             </div>
@@ -71,8 +70,22 @@
         <div class="container game-screen">
             <div class="top-game-container">
                 <img id="user-game-screen-avatar" class="game-screen-avatars" src="./imgs/maleOriginal.png" alt="">
-                <div class="progress-bar-border">
-                    <div class="progress"></div>
+                <div class="progress-container">
+                    <h1 class="progress">Correct Reactions</h1>
+                    <div class="progress-elements">
+                        <ul class="progress txt-progress">
+                            <li>Text</li>
+                            <li class="checkbox text-box"><p class=" p-txt-box">✅</p></li>
+                        </ul>
+                        <ul class="progress img-progress">
+                            <li>Picture</li>
+                            <li class="checkbox img-box"><p class="p-img-box">✅</p></li>
+                        </ul>
+                        <ul class="progress video-porgress">
+                            <li>Video</li>
+                            <li class="checkbox video-box"><p class="p-video-box">✅</p></li>
+                        </ul>
+                    </div>
                 </div>
                 <img id="computer-game-screen-avatar" class="game-screen-avatars" src="" alt="">
             </div>
@@ -108,14 +121,24 @@
                     </div>
                 </div>
             </div>
-            <button id="new-post">New Post</button>
+            <div class="bottom-btn-container in-game-container">
+                <div class="bottom-btns in-game-container">
+                    <button class="new-post">New Post</button>
+                    <button class="new-game-btn">New Game</button>
+                    <button class="tips-btn">Tips</button>
+                </div>
+            </div>
+            <div class="new-post-container">
+                <button class="new-post-in-own-container">New Post</button>
+            </div>
         </div> <!-- container game-screen -->
-        <bottom-btn-container>
+<!--  /////////////////////////// -->
+        <div class="bottom-btn-container">
             <div class="bottom-btns">
                 <button class="new-game-btn">New Game</button>
                 <button class="tips-btn">Tips</button>
             </div>
-        </bottom-btn-container>
+        </div>
     </div>
     <div id="end-screen">
         <div class="container end-screen">
@@ -129,7 +152,7 @@
             <h1 class="tip-header">A few tips..</h1>
             <p class="tips-txt">Every character/friend you choose to play with, has his own preferences.</p>
             <p class="tips-txt">For example for Max the appropriate response for a text post is a a smiley and for a
-                picture a reaction of a like. You need to try andremember each friend's preferences </p>
+                picture a reaction of a like. You need to try and remember each friend's preference.</p>
             <p class="tips-txt">The game is over when you remember all three preferences.</p>
             <button id="back" class="back-btn">Back</button>
         </div>

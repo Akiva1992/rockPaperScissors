@@ -1,3 +1,9 @@
+// ***************************Know Bug********************
+// if screen size changes mid game, new post btn won't work. 
+// ***************************Know Bug********************
+
+
+
 // // Start screen variables.
 const userMale = document.querySelector(".male-user-avatar");
 const userFemale = document.querySelector(".female-user-avatar");
@@ -133,8 +139,15 @@ function startGameFunc(){
 
 
 //////////////////Game page///////////////////////////////////////////
-
-const newPostBtn = document.getElementById("new-post");
+const newPostContainer = document.querySelector(".new-post-container")
+const display = window.getComputedStyle(newPostContainer).display;
+let newPostBtn =""
+if (display =="block"){
+    newPostBtn = document.querySelector(".new-post-in-own-container");
+}
+else{
+    newPostBtn = document.querySelector(".new-post");
+}
 const avatarReaction= document.querySelector(".avatar-reaction");
 const scenePara = document.querySelector(".scene-para");
 const sceneImg = document.querySelector(".scene-img");
@@ -144,6 +157,9 @@ const buttonList = document.querySelectorAll(".selection-button");
 const likeBtn = document.querySelector(".like");
 const smileBtn = document.querySelector(".smile");
 const heartBtn = document.querySelector(".heart");
+const pTxtBox = document.querySelector(".p-txt-box");
+const pImgBox = document.querySelector(".p-img-box");
+const pVideoBox = document.querySelector(".p-video-box");
 // Adds initial class name to enable new scene btn.
 avatarReaction.classList.add("result-showing");
 
@@ -226,7 +242,7 @@ buttonList.forEach(btn => btn.addEventListener("click", playRound));
 // btn event listener for reaction btn style.
 buttonList.forEach(btn => btn.addEventListener("click", buttonSelected))
 
-// Adds a stle to the selected reaction btn.
+// Adds a style to the selected reaction btn.
 function buttonSelected(){
     if (newPostBtn.classList.contains("clicked")){
         this.classList.add("btn-selected");
@@ -296,16 +312,15 @@ function playRound(){
             else if (this.classList.contains("smile")){
                 avatarReaction.classList.add("result-showing");
                 avatarReaction.textContent = "Hmm..";
-                rScore=0,pScore=0,sScore=0;
-                pBar.style.width="0%";
+                pTxtBox.classList.remove("done");
+                rScore = 0;
             }
             else{
                 rScore++
                 avatarReaction.classList.add("result-showing");
                 avatarReaction.textContent = "Yess!";
                 if (rScore==1){
-                    pWidth = widthConcat();
-                    pBar.style.width=`${pWidth}%`;
+                    pTxtBox.classList.add("done");
                 }
                 if (rScore>=1 && pScore>=1 && sScore>=1){
                     endScreenFunc();
@@ -319,8 +334,7 @@ function playRound(){
                 avatarReaction.textContent = "Yess!";
                 console.log(pScore);
                 if (pScore==1){
-                    pWidth = widthConcat();
-                    pBar.style.width=`${pWidth}%`;
+                    pImgBox.classList.add("done");
                 }
                 if (rScore>=1 && pScore>=1 && sScore>=1){
                     endScreenFunc();
@@ -333,16 +347,16 @@ function playRound(){
             else{
                 avatarReaction.classList.add("result-showing");
                 avatarReaction.textContent = "Hmm..";
-                rScore=0,pScore=0,sScore=0;
-                pBar.style.width="0%";
+                pTxtBox.classList.remove("done");
+                pScore = 0;
             }
         }
         else {
             if (this.classList.contains("like")){
                 avatarReaction.classList.add("result-showing");
                 avatarReaction.textContent = "Hmm.."
-                rScore=0,pScore=0,sScore=0;
-                pBar.style.width="0%";
+                sScore=0;
+                pVideoBox.classList.remove("done");
             }
             else if (this.classList.contains("smile")){
                 sScore++
@@ -350,8 +364,7 @@ function playRound(){
                 avatarReaction.classList.add("result-showing");
                 avatarReaction.textContent = "Yess!";
                 if (sScore==1){
-                    pWidth = widthConcat()
-                    pBar.style.width=`${pWidth}%`;
+                    pVideoBox.classList.add("done");
                 }
                 if (rScore>=1 && pScore>=1 && sScore>=1){
                     endScreenFunc();
@@ -409,16 +422,3 @@ function newGameFunc(){
 }
 
 
-function widthConcat(){
-    // const pBar = document.querySelector(".progress")
-    let pBarWidth = pBar.getBoundingClientRect().width;
-    console.log(pBarWidth);
-    return pBarWidth+=6;  
-}
-
-const pageBody = document.getElementsByTagName("body");
-// let bodyWidth = pageBody.getBoundingClientRect().width;
-
-// if (body >524){
-//     console.log("yess")
-// }
