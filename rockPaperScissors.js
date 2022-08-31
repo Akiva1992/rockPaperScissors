@@ -312,7 +312,15 @@ function playRound(){
             else if (this.classList.contains("smile")){
                 avatarReaction.classList.add("result-showing");
                 avatarReaction.textContent = "Hmm..";
-                pTxtBox.classList.remove("done");
+                if (sceneIndexValue == 0){
+                    pTxtBox.classList.remove("done");       
+                }
+                else if (sceneIndexValue == 1){
+                    pImgBox.classList.remove("done");       
+                }
+                else{
+                    pVideoBox.classList.remove("done");       
+                }
                 rScore = 0;
             }
             else{
@@ -320,7 +328,15 @@ function playRound(){
                 avatarReaction.classList.add("result-showing");
                 avatarReaction.textContent = "Yess!";
                 if (rScore==1){
-                    pTxtBox.classList.add("done");
+                    if (sceneIndexValue == 0){
+                        pTxtBox.classList.add("done");       
+                    }
+                    else if (sceneIndexValue == 1){
+                        pImgBox.classList.add("done");       
+                    }
+                    else{
+                        pVideoBox.classList.add("done");       
+                    }
                 }
                 if (rScore>=1 && pScore>=1 && sScore>=1){
                     endScreenFunc();
@@ -334,7 +350,23 @@ function playRound(){
                 avatarReaction.textContent = "Yess!";
                 console.log(pScore);
                 if (pScore==1){
-                    pImgBox.classList.add("done");
+                    if (sceneIndexValue == 0){
+                        if (sceneIndexValue == 0){
+                            pTxtBox.classList.add("done");       
+                        }
+                        else if (sceneIndexValue == 1){
+                            pImgBox.classList.add("done");       
+                        }
+                        else{
+                            pVideoBox.classList.add("done");       
+                        }       
+                    }
+                    else if (sceneIndexValue == 1){
+                        pImgBox.classList.add("done");       
+                    }
+                    else{
+                        pVideoBox.classList.add("done");       
+                    }
                 }
                 if (rScore>=1 && pScore>=1 && sScore>=1){
                     endScreenFunc();
@@ -347,7 +379,15 @@ function playRound(){
             else{
                 avatarReaction.classList.add("result-showing");
                 avatarReaction.textContent = "Hmm..";
-                pTxtBox.classList.remove("done");
+                if (sceneIndexValue == 0){
+                    pTxtBox.classList.remove("done");       
+                }
+                else if (sceneIndexValue == 1){
+                    pImgBox.classList.remove("done");       
+                }
+                else{
+                    pVideoBox.classList.remove("done");       
+                }
                 pScore = 0;
             }
         }
@@ -356,7 +396,15 @@ function playRound(){
                 avatarReaction.classList.add("result-showing");
                 avatarReaction.textContent = "Hmm.."
                 sScore=0;
-                pVideoBox.classList.remove("done");
+                if (sceneIndexValue == 0){
+                    pTxtBox.classList.remove("done");       
+                }
+                else if (sceneIndexValue == 1){
+                    pImgBox.classList.remove("done");       
+                }
+                else{
+                    pVideoBox.classList.remove("done");       
+                }
             }
             else if (this.classList.contains("smile")){
                 sScore++
@@ -364,7 +412,15 @@ function playRound(){
                 avatarReaction.classList.add("result-showing");
                 avatarReaction.textContent = "Yess!";
                 if (sScore==1){
-                    pVideoBox.classList.add("done");
+                    if (sceneIndexValue == 0){
+                        pTxtBox.classList.add("done");       
+                    }
+                    else if (sceneIndexValue == 1){
+                        pImgBox.classList.add("done");       
+                    }
+                    else{
+                        pVideoBox.classList.add("done");       
+                    }
                 }
                 if (rScore>=1 && pScore>=1 && sScore>=1){
                     endScreenFunc();
